@@ -6,15 +6,16 @@ const House = require('../models/House');
 const router = express.Router();
 
 const validate = [
-    check('fullName')
-        .isLength({min: 2})
-        .withMessage('Your full name is required'),
-    check('email')
-        .check('email').isEmail()
-        .withMessage('Provide a valid email'),
-    check('password')
-        .isLength({min: 6})
-        .withMessage('Password should be at least six characters')
+    check('title')
+        .isLength({min: 3, max: 50})
+        .withMessage('Title should be between 3 to 50 characters'),
+    check('description')
+        .isLength({min: 10, max: 200})
+        .withMessage('Description should be between 10 to 200 characters'),
+    check('address')
+        .isLength({min: 10, max: 100})
+        .withMessage('Address should be between 10 to 100 characters'),
+    check('price').isNumeric().withMessage('Price should be a number')
 ]
 
 // /api/houses
